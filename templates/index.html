@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智学助手 · AI 驱动的专业课学习工具</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo">智</div>
+        <div class="brand-text">
+          <h1>智学助手</h1>
+          <p>输入一个计算机概念，AI 帮你拆成定义、类比、代码、误区与自测题</p>
+        </div>
+      </div>
+      <div class="tag">DeepSeek · Flask</div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="main-col">
+      <form id="ask-form" class="ask-card">
+        <label for="concept">想弄懂哪个概念？</label>
+        <div class="ask-row">
+          <input id="concept" name="concept" type="text" maxlength="50" autocomplete="off"
+                 placeholder="例如：二叉搜索树 / 闭包 / 快速排序 / 虚函数">
+          <select id="language" name="language" aria-label="示例代码语言">
+            <option value="python">Python</option>
+            <option value="cpp">C++</option>
+            <option value="javascript">JavaScript</option>
+          </select>
+          <button id="submit-btn" type="submit">生成讲解</button>
+        </div>
+        <p class="hint">示例代码按所选语言生成，结果自动保存到右侧学习记录</p>
+      </form>
+
+      <div id="status" class="status hidden"></div>
+      <div id="result" class="result hidden"></div>
+    </section>
+
+    <aside class="side-col">
+      <div class="side-head">
+        <h2>学习记录</h2>
+        <button id="refresh-btn" type="button" class="link-btn">刷新</button>
+      </div>
+      <ul id="history" class="history"></ul>
+    </aside>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
